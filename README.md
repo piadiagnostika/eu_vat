@@ -1,11 +1,11 @@
 # EU VAT & VIES Validation for ERPNext
 
-[![ERPNext Version](https://img.shields.io/badge/ERPNext-v14%20%7C%20v15%20%7C%20v16-blue.svg)](https://erpnext.com)
+[![ERPNext Version](https://img.shields.io/badge/ERPNext-v16%20(tested)-blue.svg)](https://erpnext.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![API: European Commission VIES](https://img.shields.io/badge/API-EU%20VIES%20REST-green.svg)](https://ec.europa.eu/taxation_customs/vies/)
 [![Translations](https://img.shields.io/badge/Translations-EN%20%7C%20ES%20%7C%20DE%20%7C%20FR%20%7C%20IT-purple.svg)](https://www.gnu.org/software/gettext/)
 
-Official EU VAT validation, VIES real-time registry verification, and automatic intra-community tax rules for **ERPNext** (v14, v15, and v16).
+Official EU VAT validation, VIES real-time registry verification, and automatic intra-community tax rules for **ERPNext v16**.
 
 ---
 
@@ -17,11 +17,11 @@ Official EU VAT validation, VIES real-time registry verification, and automatic 
 - **🏷️ Automated Tax Category Routing**:
   - Automatically assigns the **`EU B2B`** tax category when a valid cross-border EU VAT number is confirmed.
   - Leaves domestic transactions subject to standard national VAT.
-  - Blocks saving with `EU B2B` if the VAT number is invalid or missing.
-- **🏢 Registered Company Name & Address Auto-Capture**: Automatically retrieves the official business name and registered address returned by VIES.
+  - Strict compliance: Blocks saving with `EU B2B` if the VAT number is invalid, empty, or mismatched.
+- **🏢 Registered Company Name & Address Auto-Capture**: Automatically retrieves the official business name and registered fiscal address returned by VIES.
 - **🎨 Interactive UI Card in Desk**: Displays a sleek status card in the Tax section of Customer and Supplier forms with an instant **"⚡ Verify VIES"** button and visual indicators.
 - **🌐 Full GNU Gettext Localization (ERPNext 16 Compliant)**:
-  - English (default)
+  - English (`en`)
   - Spanish (`es`)
   - German (`de`)
   - French (`fr`)
@@ -31,8 +31,8 @@ Official EU VAT validation, VIES real-time registry verification, and automatic 
 
 ## 📋 Requirements
 
-- Frappe Framework v16 (actively tested)
-- ERPNext v16 (actively tested)
+- **Frappe Framework**: v16 (actively tested & supported)
+- **ERPNext**: v16 (actively tested & supported)
 - Python packages: `requests` (included with Frappe)
 
 ---
@@ -43,7 +43,7 @@ From your bench directory:
 
 ```bash
 # 1. Fetch the application repository
-bench get-app https://github.com/<your-username>/eu_vat.git
+bench get-app https://github.com/piadiagnostika/eu_vat.git
 
 # 2. Install the app onto your target site
 bench --site <your-site-name> install-app eu_vat
@@ -54,6 +54,33 @@ bench --site <your-site-name> migrate
 # 4. (Optional) Rebuild client assets
 bench build
 ```
+
+---
+
+## 🏷️ Tax Category Automation & Enforcement Rules
+
+The application directly manages the **Tax Category** on `Customer`, `Supplier`, and `Sales Invoice` according to European tax regulations (Directive 2006/112/EC):
+
+### 1. Automatic Assignment to `EU B2B` (Cross-Border Exemption)
+- When an EU VAT number is validated in VIES and the customer's country differs from your company's home member state, the system automatically sets:
+  - `tax_category = "EU B2B"`
+  - `pia_intra_community_valid = 1`
+- This triggers your zero-rated intra-community sales tax template (reverse charge / Art. 138).
+
+### 2. Domestic Safeguard (No Exemption for Home Country)
+- If the customer belongs to your own home member state (e.g. both company and client are in Spain `ES`, or Germany `DE`):
+  - The app **does NOT** assign `EU B2B`.
+  - Domestic transactions remain subject to standard local VAT, avoiding accidental tax exemptions for local clients.
+
+### 3. Strict Enforcement for `EU B2B`
+If a user manually selects or leaves the Tax Category as **`EU B2B`**, validation becomes **mandatory and blocking**:
+- **Empty Tax ID:** Throws an error preventing save (`Missing VAT Number`).
+- **Invalid VIES Status:** Throws an error preventing save (`VIES Verification Failed`).
+- **Country Mismatch:** Throws an error preventing save (`Country Mismatch Error`).
+- *Benefit:* Ensures your organization never legally compromises itself by issuing tax-exempt intra-community invoices without verified VIES registration.
+
+### 4. Non-EU & Standard Domestic Workflow
+- If `EU B2B` is **not** selected and a local tax ID (without EU prefix) or an unverified VAT is entered, ERPNext permits normal saving with an informative, non-blocking notification.
 
 ---
 
@@ -97,10 +124,6 @@ bench build
                          │ • Store VIES Name & Address   │
                          └───────────────────────────────┘
 ```
-
-1. **Domestic Tax IDs**: If a national tax ID is provided (without an EU country code prefix), it is saved normally as a standard domestic tax ID.
-2. **Country Consistency**: If a customer located in France is assigned an Italian VAT (`IT...`), the system triggers a country mismatch warning.
-3. **EU B2B Enforcement**: If a user attempts to select the `EU B2B` tax category for an entity whose VAT is not registered in VIES, saving is prevented with an informative error.
 
 ---
 
