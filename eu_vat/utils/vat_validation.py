@@ -10,6 +10,9 @@ EU_COUNTRY_CODES = {
     "SE", "SI", "SK", "XI"
 }
 
+# Alias for compatibility with api.py
+EU_COUNTRIES = EU_COUNTRY_CODES
+
 # Country name mapping for multi-lingual input resolution
 COUNTRY_NAME_TO_CODE = {
     # Spanish
@@ -53,7 +56,7 @@ def resolve_country_code(raw_country):
         return None, ""
 
     normalized = str(raw_country).strip().upper()
-    
+
     code = None
     if len(normalized) == 2:
         code = "EL" if normalized == "GR" else normalized
@@ -74,7 +77,7 @@ def resolve_country_code(raw_country):
 def validate_eu_vat(doc, method=None):
     """
     Validates EU VAT numbers via the European Commission VIES REST API.
-    
+
     Rules:
     1. Empty Tax ID: resets intra_community_valid to 0. Throws error only if EU B2B is selected.
     2. National/Non-EU Tax ID: resets intra_community_valid to 0, shows a non-blocking notice,
@@ -155,14 +158,14 @@ def validate_eu_vat(doc, method=None):
 
     try:
         response = requests.get(url, timeout=10)
-        
+
         if response.status_code == 200:
             data = response.json()
             is_valid = bool(data.get("isValid"))
-            
+
             if not is_valid:
                 doc.pia_intra_community_valid = 0
-                
+
                 # If the user selected EU B2B tax category, throw an error to prevent illegal tax exemption
                 if is_eu_b2b_selected:
                     frappe.throw(
@@ -178,7 +181,7 @@ def validate_eu_vat(doc, method=None):
             else:
                 # SUCCESS: Mark the intra-community VAT checkbox
                 doc.pia_intra_community_valid = 1
-                
+
                 # Auto-assign 'EU B2B' tax category (except for domestic Austrian entities)
                 if country_code != "AT":
                     if doc.doctype in ["Customer", "Supplier", "Sales Invoice"]:
@@ -211,7 +214,7 @@ def validate_eu_vat(doc, method=None):
                 title=_("VIES Service Unavailable"),
                 indicator="orange"
             )
-            
+
     except requests.exceptions.RequestException:
         # Handle connection timeouts and network outages gracefully
         doc.pia_intra_community_valid = 0
