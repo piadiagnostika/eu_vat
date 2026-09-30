@@ -27,7 +27,7 @@ function toggle_checkbox_style(frm) {
     if (field && field.$wrapper) {
         let checkbox = field.$wrapper.find('input[type="checkbox"]');
         let isValid = frm.doc.pia_intra_community_valid === 1 || frm.doc.intra_community_valid === 1;
-        
+
         if (checkbox.length) {
             if (isValid) {
                 checkbox.css({
@@ -43,7 +43,7 @@ function toggle_checkbox_style(frm) {
                     'place-content': 'center',
                     'transition': 'all 0.2s ease'
                 });
-                
+
                 if (!checkbox.find('.tick-blanco').length) {
                     checkbox.html('<span class="tick-blanco" style="color: white; font-size: 11px; font-weight: bold; line-height: 1;">✓</span>');
                 }
@@ -78,23 +78,30 @@ function render_vies_card(frm) {
     let isValid = frm.doc.pia_intra_community_valid === 1 || frm.doc.intra_community_valid === 1;
     let supplierCountry = frm.doc.country || frm.doc.territory || '';
 
+    let cardTitle = isValid ? __('✓ VIES Verified (Intra-community Operator)') : __('ℹ️ VIES VAT Status');
+    let badgeText = isValid ? __('EU Active') : (taxId ? __('Domestic / No Exemption') : __('No Tax ID'));
+    let btnText = __('⚡ Verify VIES');
+    let helpPrompt = __('Enter a Tax ID to verify European VIES validity.');
+    let labelTaxId = __('Tax ID:');
+    let labelSuppCountry = __('Supplier Country:');
+
     let cardHtml = `
     <div class="vies-details-card" style="margin-top: 10px; padding: 12px 14px; border-radius: 8px; font-size: 12px; border: 1px solid ${isValid ? '#bbf7d0' : '#e2e8f0'}; background: ${isValid ? '#f0fdf4' : '#f8fafc'};">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <div style="display: flex; align-items: center; gap: 6px;">
                 <span style="font-weight: 700; color: ${isValid ? '#15803d' : '#475569'};">
-                    ${isValid ? '✓ VIES Verificado (Operador Intracomunitario)' : 'ℹ️ Estado de IVA VIES'}
+                    ${cardTitle}
                 </span>
                 <span style="padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; background: ${isValid ? '#dcfce7' : '#e2e8f0'}; color: ${isValid ? '#166534' : '#64748b'};">
-                    ${isValid ? 'Activo en UE' : (taxId ? 'Nacional / Sin exención' : 'Sin NIF')}
+                    ${badgeText}
                 </span>
             </div>
-            ${taxId ? `<button type="button" class="btn btn-xs btn-default btn-check-vies" style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #ffffff; border: 1px solid #cbd5e1; cursor: pointer;">⚡ Consultar VIES</button>` : ''}
+            ${taxId ? `<button type="button" class="btn btn-xs btn-default btn-check-vies" style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #ffffff; border: 1px solid #cbd5e1; cursor: pointer;">${btnText}</button>` : ''}
         </div>
 
         <div class="vies-card-body" style="color: #475569; line-height: 1.5;">
-            ${taxId ? `<div><b>NIF/CIF:</b> <span class="vies-vat-code" style="font-family: monospace; font-weight: 600; color: #1e293b;">${taxId}</span></div>` : '<div>Introduce un NIF para consultar la validez en el sistema VIES europeo.</div>'}
-            ${supplierCountry ? `<div><b>País del Proveedor:</b> <span>${supplierCountry}</span></div>` : ''}
+            ${taxId ? `<div><b>${labelTaxId}</b> <span class="vies-vat-code" style="font-family: monospace; font-weight: 600; color: #1e293b;">${taxId}</span></div>` : `<div>${helpPrompt}</div>`}
+            ${supplierCountry ? `<div><b>${labelSuppCountry}</b> <span>${supplierCountry}</span></div>` : ''}
             <div class="vies-company-details" style="${isValid ? '' : 'display: none;'} margin-top: 4px; padding-top: 4px; border-top: 1px dashed #cbd5e1;"></div>
         </div>
     </div>
@@ -105,7 +112,7 @@ function render_vies_card(frm) {
     field.$wrapper.find('.btn-check-vies').on('click', function(e) {
         e.preventDefault();
         let btn = $(this);
-        btn.prop('disabled', true).text('Consultando...');
+        btn.prop('disabled', true).text(__('Checking...'));
 
         frappe.call({
             method: 'eu_vat.api.check_vies_vat',
@@ -114,34 +121,35 @@ function render_vies_card(frm) {
                 customer_country: supplierCountry
             },
             callback: function(r) {
-                btn.prop('disabled', false).text('⚡ Consultar VIES');
+                btn.prop('disabled', false).text(__('⚡ Verify VIES'));
                 if (r.message) {
                     let m = r.message;
                     let body = field.$wrapper.find('.vies-card-body');
-                    
+
                     if (m.country_mismatch) {
+                        let warnMsg = __('Notice: The VAT prefix ({0}) does not match the supplier country ({1}).').replace('{0}', m.country_code).replace('{1}', supplierCountry);
                         frappe.msgprint({
                             title: __('Country Mismatch'),
                             indicator: 'orange',
-                            message: __('Aviso: El prefijo de IVA ({0}) no coincide con el país del proveedor ({1}).').replace('{0}', m.country_code).replace('{1}', supplierCountry)
+                            message: warnMsg
                         });
                         body.html(`
-                            <div style="color: #b45309; font-weight: 600;">⚠️ Discrepancia de País Detectada</div>
-                            <div style="font-size: 11px; color: #78350f;">El NIF pertenece a <b>${m.country_code}</b> pero la ficha está registrada en <b>${supplierCountry}</b>.</div>
+                            <div style="color: #b45309; font-weight: 600;">⚠️ ${__('Country Mismatch Detected')}</div>
+                            <div style="font-size: 11px; color: #78350f;">${__('Tax ID belongs to {0} but supplier is registered in {1}.').replace('{0}', '<b>' + m.country_code + '</b>').replace('{1}', '<b>' + supplierCountry + '</b>')}</div>
                         `);
                     } else if (m.valid) {
                         frm.set_value('pia_intra_community_valid', 1);
                         body.html(`
-                            <div><b>NIF/CIF:</b> <span style="font-family: monospace; font-weight: 700; color: #15803d;">${taxId}</span> (Válido en VIES)</div>
-                            ${m.name ? `<div><b>Razón Social:</b> ${m.name}</div>` : ''}
-                            ${m.address ? `<div><b>Dirección Registrada:</b> ${m.address.replace(/\\n/g, ', ')}</div>` : ''}
+                            <div><b>${__('Tax ID:')}</b> <span style="font-family: monospace; font-weight: 700; color: #15803d;">${taxId}</span> (${__('VIES Valid')})</div>
+                            ${m.name ? `<div><b>${__('Registered Name:')}</b> ${m.name}</div>` : ''}
+                            ${m.address ? `<div><b>${__('Registered Address:')}</b> ${m.address.replace(/\\n/g, ', ')}</div>` : ''}
                         `);
                         toggle_checkbox_style(frm);
                     } else {
                         frm.set_value('pia_intra_community_valid', 0);
                         body.html(`
-                            <div><b>NIF/CIF:</b> <span style="font-family: monospace; color: #475569;">${taxId}</span></div>
-                            <div style="color: #64748b; font-size: 11px;">${m.message || 'No figura en el censo oficial VIES de operadores intracomunitarios.'}</div>
+                            <div><b>${__('Tax ID:')}</b> <span style="font-family: monospace; color: #475569;">${taxId}</span></div>
+                            <div style="color: #64748b; font-size: 11px;">${m.message || __('Not registered in the official European VIES registry.')}</div>
                         `);
                         toggle_checkbox_style(frm);
                     }
