@@ -1,0 +1,153 @@
+# French translations for eu_vat.
+# Copyright (C) 2026 PIA Diagnostika
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eu_vat 1.0.0\n"
+"Report-Msgid-Bugs-To: piadiagnostika@gmail.com\n"
+"POT-Creation-Date: 2026-09-30 06:10+0000\n"
+"PO-Revision-Date: 2026-09-30 06:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Intra-community VAT valid"
+msgstr "TVA intracommunautaire valide"
+
+msgid "intra_community_valid"
+msgstr "TVA intracommunautaire valide"
+
+msgid "Legal Note"
+msgstr "Mention légale"
+
+msgid "Missing VAT Number"
+msgstr "Numéro de TVA manquant"
+
+msgid "A valid EU VAT number is mandatory when Tax Category is set to 'EU B2B'."
+msgstr "Un numéro de TVA intracommunautaire valide est obligatoire lorsque la catégorie fiscale est 'EU B2B'."
+
+msgid "Invalid EU VAT Format"
+msgstr "Format de TVA UE invalide"
+
+msgid "The Tax ID '{0}' does not have a valid EU country prefix. EU B2B tax category requires an intra-community VAT (e.g. ES{0} for Spain)."
+msgstr "Le numéro fiscal '{0}' ne comporte pas de préfixe de pays de l'UE valide. La catégorie EU B2B exige un numéro de TVA intracommunautaire (ex. ES{0} pour l'Espagne)."
+
+msgid "Domestic Tax ID"
+msgstr "Identifiant fiscal national"
+
+msgid "Notice: Tax ID '{0}' does not have an EU VAT prefix. Saved as domestic/standard tax ID."
+msgstr "Avis : L'identifiant fiscal '{0}' ne comporte pas de préfixe UE. Enregistré comme identifiant fiscal national."
+
+msgid "Country Mismatch Error"
+msgstr "Erreur de concordance de pays"
+
+msgid "Country Mismatch Warning"
+msgstr "Avertissement de concordance de pays"
+
+msgid "Country Mismatch"
+msgstr "Discordance de pays"
+
+msgid "Country Mismatch: The VAT prefix '{0}' does not match the customer's country '{1}' ({2}). You cannot assign a VAT number from a different member state to this customer."
+msgstr "Discordance de pays : Le préfixe de TVA '{0}' ne correspond pas au pays du client '{1}' ({2}). Vous ne pouvez pas attribuer un numéro de TVA d'un autre État membre à ce client."
+
+msgid "VIES Verification Failed"
+msgstr "Échec de la vérification VIES"
+
+msgid "The EU VAT number '{0}' is NOT valid in the official VIES system. It cannot be used with the 'EU B2B' tax category."
+msgstr "Le numéro de TVA UE '{0}' N'EST PAS valide dans le système officiel VIES. Il ne peut pas être utilisé avec la catégorie fiscale 'EU B2B'."
+
+msgid "VIES Verification"
+msgstr "Vérification VIES"
+
+msgid "Notice: The VAT number '{0}' is not registered in the European VIES system. Saved without intra-community tax exemption."
+msgstr "Avis : Le numéro de TVA '{0}' n'est pas enregistré dans le système VIES. Enregistré sans exonération de TVA intracommunautaire."
+
+msgid "VIES Validated"
+msgstr "VIES Validé"
+
+msgid "EU VAT number '{0}' successfully verified in VIES (Intra-community valid)."
+msgstr "Numéro de TVA UE '{0}' vérifié avec succès dans VIES (valide pour les échanges intracommunautaires)."
+
+msgid "Registered Name"
+msgstr "Raison sociale enregistrée"
+
+msgid "Registered Address"
+msgstr "Adresse fiscale enregistrée"
+
+msgid "VIES Service Unavailable"
+msgstr "Service VIES indisponible"
+
+msgid "Warning: Could not verify VAT in VIES (European service temporarily unavailable)."
+msgstr "Avertissement : Impossible de vérifier la TVA dans VIES (service européen temporairement indisponible)."
+
+msgid "VIES Connection Failed"
+msgstr "Échec de connexion VIES"
+
+msgid "Warning: No connection to VIES. Intra-community VAT could not be verified automatically. Please check Tax Category manually."
+msgstr "Avertissement : Pas de connexion à VIES. La TVA intracommunautaire n'a pas pu être vérifiée automatiquement. Veuillez vérifier la catégorie fiscale manuellement."
+
+msgid "✓ VIES Verified (Intra-community Operator)"
+msgstr "✓ VIES vérifié (Opérateur intracommunautaire)"
+
+msgid "ℹ️ VIES VAT Status"
+msgstr "ℹ️ Statut TVA VIES"
+
+msgid "EU Active"
+msgstr "Actif dans l'UE"
+
+msgid "Domestic / No Exemption"
+msgstr "National / Sans exonération"
+
+msgid "No Tax ID"
+msgstr "Aucun numéro fiscal"
+
+msgid "⚡ Verify VIES"
+msgstr "⚡ Vérifier VIES"
+
+msgid "Checking..."
+msgstr "Vérification..."
+
+msgid "Enter a Tax ID to verify European VIES validity."
+msgstr "Saisissez un numéro de TVA pour vérifier sa validité dans le système européen VIES."
+
+msgid "Tax ID:"
+msgstr "N° TVA / Fiscal :"
+
+msgid "Customer Country:"
+msgstr "Pays du client :"
+
+msgid "Supplier Country:"
+msgstr "Pays du fournisseur :"
+
+msgid "Country Mismatch Detected"
+msgstr "Discordance de pays détectée"
+
+msgid "Tax ID belongs to {0} but customer is registered in {1}."
+msgstr "Le numéro de TVA appartient à {0} mais le client est enregistré en {1}."
+
+msgid "Tax ID belongs to {0} but supplier is registered in {1}."
+msgstr "Le numéro de TVA appartient à {0} mais le fournisseur est enregistré en {1}."
+
+msgid "Notice: The VAT prefix ({0}) does not match the customer country ({1})."
+msgstr "Avis : Le préfixe de TVA ({0}) ne correspond pas au pays du client ({1})."
+
+msgid "Notice: The VAT prefix ({0}) does not match the supplier country ({1})."
+msgstr "Avis : Le préfixe de TVA ({0}) ne correspond pas au pays du fournisseur ({1})."
+
+msgid "VIES Valid"
+msgstr "Valide dans VIES"
+
+msgid "Registered Name:"
+msgstr "Raison sociale :"
+
+msgid "Registered Address:"
+msgstr "Adresse enregistrée :"
+
+msgid "Not registered in the official European VIES registry."
+msgstr "Non enregistré dans le registre officiel européen VIES."
+
+msgid "Exempt intra-Community delivery according to Art. 6, para. 1 of the Austrian VAT Act of 1994."
+msgstr "Livraison intracommunautaire exonérée selon l'art. 6, al. 1 de la loi autrichienne sur la TVA de 1994."

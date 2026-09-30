@@ -1,0 +1,153 @@
+# German translations for eu_vat.
+# Copyright (C) 2026 PIA Diagnostika
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eu_vat 1.0.0\n"
+"Report-Msgid-Bugs-To: piadiagnostika@gmail.com\n"
+"POT-Creation-Date: 2026-09-30 06:10+0000\n"
+"PO-Revision-Date: 2026-09-30 06:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Intra-community VAT valid"
+msgstr "Innergemeinschaftliche USt-IdNr. gültig"
+
+msgid "intra_community_valid"
+msgstr "Innergemeinschaftliche USt-IdNr. gültig"
+
+msgid "Legal Note"
+msgstr "Gesetzlicher Hinweis"
+
+msgid "Missing VAT Number"
+msgstr "Fehlende USt-IdNr."
+
+msgid "A valid EU VAT number is mandatory when Tax Category is set to 'EU B2B'."
+msgstr "Eine gültige EU-USt-IdNr. ist obligatorisch, wenn die Steuerkategorie auf 'EU B2B' eingestellt ist."
+
+msgid "Invalid EU VAT Format"
+msgstr "Ungültiges EU-USt-Format"
+
+msgid "The Tax ID '{0}' does not have a valid EU country prefix. EU B2B tax category requires an intra-community VAT (e.g. ES{0} for Spain)."
+msgstr "Die Steuernummer '{0}' enthält keinen gültigen EU-Ländercode. Die Steuerkategorie 'EU B2B' erfordert eine innergemeinschaftliche USt-IdNr. (z. B. ES{0} für Spanien)."
+
+msgid "Domestic Tax ID"
+msgstr "Nationale Steuernummer"
+
+msgid "Notice: Tax ID '{0}' does not have an EU VAT prefix. Saved as domestic/standard tax ID."
+msgstr "Hinweis: Die Steuernummer '{0}' hat kein EU-USt-Präfix. Als nationale Standard-Steuernummer gespeichert."
+
+msgid "Country Mismatch Error"
+msgstr "Fehler: Länderabweichung"
+
+msgid "Country Mismatch Warning"
+msgstr "Warnung: Länderabweichung"
+
+msgid "Country Mismatch"
+msgstr "Länderabweichung"
+
+msgid "Country Mismatch: The VAT prefix '{0}' does not match the customer's country '{1}' ({2}). You cannot assign a VAT number from a different member state to this customer."
+msgstr "Länderabweichung: Das USt-Präfix '{0}' stimmt nicht mit dem Land des Kunden '{1}' ({2}) überein. Diesem Kunden kann keine USt-IdNr. eines anderen Mitgliedstaates zugeordnet werden."
+
+msgid "VIES Verification Failed"
+msgstr "MIAS-Prüfung fehlgeschlagen"
+
+msgid "The EU VAT number '{0}' is NOT valid in the official VIES system. It cannot be used with the 'EU B2B' tax category."
+msgstr "Die EU-USt-IdNr. '{0}' ist im offiziellen MIAS/VIES-System NICHT gültig. Sie kann nicht mit der Steuerkategorie 'EU B2B' verwendet werden."
+
+msgid "VIES Verification"
+msgstr "MIAS-Prüfung"
+
+msgid "Notice: The VAT number '{0}' is not registered in the European VIES system. Saved without intra-community tax exemption."
+msgstr "Hinweis: Die USt-IdNr. '{0}' ist nicht im europäischen MIAS-System registriert. Ohne innergemeinschaftliche Steuerbefreiung gespeichert."
+
+msgid "VIES Validated"
+msgstr "MIAS validiert"
+
+msgid "EU VAT number '{0}' successfully verified in VIES (Intra-community valid)."
+msgstr "EU-USt-IdNr. '{0}' erfolgreich im MIAS bestätigt (innergemeinschaftlich gültig)."
+
+msgid "Registered Name"
+msgstr "Registrierter Firmenname"
+
+msgid "Registered Address"
+msgstr "Registrierte Geschäftsadresse"
+
+msgid "VIES Service Unavailable"
+msgstr "MIAS-Dienst nicht verfügbar"
+
+msgid "Warning: Could not verify VAT in VIES (European service temporarily unavailable)."
+msgstr "Warnung: USt-IdNr. konnte im MIAS nicht überprüft werden (europäischer Dienst vorübergehend nicht verfügbar)."
+
+msgid "VIES Connection Failed"
+msgstr "MIAS-Verbindungsfehler"
+
+msgid "Warning: No connection to VIES. Intra-community VAT could not be verified automatically. Please check Tax Category manually."
+msgstr "Warnung: Keine Verbindung zu MIAS. Innergemeinschaftliche USt-IdNr. konnte nicht automatisch geprüft werden. Bitte Steuerkategorie manuell prüfen."
+
+msgid "✓ VIES Verified (Intra-community Operator)"
+msgstr "✓ MIAS bestätigt (Innergemeinschaftlicher Wirtschaftsbeteiligter)"
+
+msgid "ℹ️ VIES VAT Status"
+msgstr "ℹ️ MIAS USt-Status"
+
+msgid "EU Active"
+msgstr "In der EU aktiv"
+
+msgid "Domestic / No Exemption"
+msgstr "National / Keine Steuerbefreiung"
+
+msgid "No Tax ID"
+msgstr "Keine USt-IdNr."
+
+msgid "⚡ Verify VIES"
+msgstr "⚡ MIAS prüfen"
+
+msgid "Checking..."
+msgstr "Wird geprüft..."
+
+msgid "Enter a Tax ID to verify European VIES validity."
+msgstr "Geben Sie eine USt-IdNr. ein, um die Gültigkeit im europäischen MIAS zu prüfen."
+
+msgid "Tax ID:"
+msgstr "USt-IdNr.:"
+
+msgid "Customer Country:"
+msgstr "Land des Kunden:"
+
+msgid "Supplier Country:"
+msgstr "Land des Lieferanten:"
+
+msgid "Country Mismatch Detected"
+msgstr "Länderabweichung festgestellt"
+
+msgid "Tax ID belongs to {0} but customer is registered in {1}."
+msgstr "USt-IdNr. gehört zu {0}, aber der Kunde ist in {1} registriert."
+
+msgid "Tax ID belongs to {0} but supplier is registered in {1}."
+msgstr "USt-IdNr. gehört zu {0}, aber der Lieferant ist in {1} registriert."
+
+msgid "Notice: The VAT prefix ({0}) does not match the customer country ({1})."
+msgstr "Hinweis: Das USt-Präfix ({0}) stimmt nicht mit dem Land des Kunden ({1}) überein."
+
+msgid "Notice: The VAT prefix ({0}) does not match the supplier country ({1})."
+msgstr "Hinweis: Das USt-Präfix ({0}) stimmt nicht mit dem Land des Lieferanten ({1}) überein."
+
+msgid "VIES Valid"
+msgstr "Im MIAS gültig"
+
+msgid "Registered Name:"
+msgstr "Registrierter Name:"
+
+msgid "Registered Address:"
+msgstr "Registrierte Adresse:"
+
+msgid "Not registered in the official European VIES registry."
+msgstr "Nicht im offiziellen europäischen MIAS-Register verzeichnet."
+
+msgid "Exempt intra-Community delivery according to Art. 6, para. 1 of the Austrian VAT Act of 1994."
+msgstr "Steuerfreie innergemeinschaftliche Lieferung gemäß § 6 Abs. 1 UStG 1994."

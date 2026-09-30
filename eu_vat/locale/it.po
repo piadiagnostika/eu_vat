@@ -1,0 +1,153 @@
+# Italian translations for eu_vat.
+# Copyright (C) 2026 PIA Diagnostika
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eu_vat 1.0.0\n"
+"Report-Msgid-Bugs-To: piadiagnostika@gmail.com\n"
+"POT-Creation-Date: 2026-09-30 06:10+0000\n"
+"PO-Revision-Date: 2026-09-30 06:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Intra-community VAT valid"
+msgstr "Partita IVA intracomunitaria valida"
+
+msgid "intra_community_valid"
+msgstr "Partita IVA intracomunitaria valida"
+
+msgid "Legal Note"
+msgstr "Nota legale"
+
+msgid "Missing VAT Number"
+msgstr "Partita IVA mancante"
+
+msgid "A valid EU VAT number is mandatory when Tax Category is set to 'EU B2B'."
+msgstr "Una partita IVA UE valida è obbligatoria quando la Categoria Fiscale è impostata su 'EU B2B'."
+
+msgid "Invalid EU VAT Format"
+msgstr "Formato IVA UE non valido"
+
+msgid "The Tax ID '{0}' does not have a valid EU country prefix. EU B2B tax category requires an intra-community VAT (e.g. ES{0} for Spain)."
+msgstr "Il codice fiscale/partita IVA '{0}' non ha un prefisso nazionale UE valido. La categoria 'EU B2B' richiede una partita IVA intracomunitaria (es. ES{0} per la Spagna)."
+
+msgid "Domestic Tax ID"
+msgstr "Identificativo fiscale nazionale"
+
+msgid "Notice: Tax ID '{0}' does not have an EU VAT prefix. Saved as domestic/standard tax ID."
+msgstr "Avviso: L'identificativo fiscale '{0}' non ha un prefisso UE. Salvato come identificativo fiscale nazionale/standard."
+
+msgid "Country Mismatch Error"
+msgstr "Errore di corrispondenza del paese"
+
+msgid "Country Mismatch Warning"
+msgstr "Avviso di mancata corrispondenza del paese"
+
+msgid "Country Mismatch"
+msgstr "Mancata corrispondenza del paese"
+
+msgid "Country Mismatch: The VAT prefix '{0}' does not match the customer's country '{1}' ({2}). You cannot assign a VAT number from a different member state to this customer."
+msgstr "Mancata corrispondenza del paese: Il prefisso IVA '{0}' non corrisponde al paese del cliente '{1}' ({2}). Non è possibile assegnare una partita IVA di un altro Stato membro a questo cliente."
+
+msgid "VIES Verification Failed"
+msgstr "Verifica VIES non riuscita"
+
+msgid "The EU VAT number '{0}' is NOT valid in the official VIES system. It cannot be used with the 'EU B2B' tax category."
+msgstr "La partita IVA UE '{0}' NON è valida nel sistema ufficiale VIES. Non può essere utilizzata con la categoria fiscale 'EU B2B'."
+
+msgid "VIES Verification"
+msgstr "Verifica VIES"
+
+msgid "Notice: The VAT number '{0}' is not registered in the European VIES system. Saved without intra-community tax exemption."
+msgstr "Avviso: La partita IVA '{0}' non è registrata nel sistema europeo VIES. Salvato senza esenzione IVA intracomunitaria."
+
+msgid "VIES Validated"
+msgstr "VIES Convalidato"
+
+msgid "EU VAT number '{0}' successfully verified in VIES (Intra-community valid)."
+msgstr "Partita IVA UE '{0}' verificata con successo in VIES (valida per operazioni intracomunitarie)."
+
+msgid "Registered Name"
+msgstr "Ragione sociale registrata"
+
+msgid "Registered Address"
+msgstr "Indirizzo fiscale registrato"
+
+msgid "VIES Service Unavailable"
+msgstr "Servizio VIES non disponibile"
+
+msgid "Warning: Could not verify VAT in VIES (European service temporarily unavailable)."
+msgstr "Attenzione: Impossibile verificare la partita IVA in VIES (servizio europeo temporaneamente non disponibile)."
+
+msgid "VIES Connection Failed"
+msgstr "Connessione a VIES non riuscita"
+
+msgid "Warning: No connection to VIES. Intra-community VAT could not be verified automatically. Please check Tax Category manually."
+msgstr "Attenzione: Nessuna connessione a VIES. La partita IVA intracomunitaria non è stata verificata automaticamente. Si prega di verificare la Categoria Fiscale manualmente."
+
+msgid "✓ VIES Verified (Intra-community Operator)"
+msgstr "✓ VIES verificato (Operatore intracomunitario)"
+
+msgid "ℹ️ VIES VAT Status"
+msgstr "ℹ️ Stato IVA VIES"
+
+msgid "EU Active"
+msgstr "Attivo nell'UE"
+
+msgid "Domestic / No Exemption"
+msgstr "Nazionale / Senza esenzione"
+
+msgid "No Tax ID"
+msgstr "Nessun codice fiscale / P.IVA"
+
+msgid "⚡ Verify VIES"
+msgstr "⚡ Verifica VIES"
+
+msgid "Checking..."
+msgstr "Verifica in corso..."
+
+msgid "Enter a Tax ID to verify European VIES validity."
+msgstr "Inserisci una partita IVA per verificare la validità nel sistema europeo VIES."
+
+msgid "Tax ID:"
+msgstr "P.IVA / Cod. Fiscale:"
+
+msgid "Customer Country:"
+msgstr "Paese del cliente:"
+
+msgid "Supplier Country:"
+msgstr "Paese del fornitore:"
+
+msgid "Country Mismatch Detected"
+msgstr "Rilevata mancata corrispondenza del paese"
+
+msgid "Tax ID belongs to {0} but customer is registered in {1}."
+msgstr "La partita IVA appartiene a {0} ma il cliente è registrato in {1}."
+
+msgid "Tax ID belongs to {0} but supplier is registered in {1}."
+msgstr "La partita IVA appartiene a {0} ma il fornitore è registrato in {1}."
+
+msgid "Notice: The VAT prefix ({0}) does not match the customer country ({1})."
+msgstr "Avviso: Il prefisso IVA ({0}) non corrisponde al paese del cliente ({1})."
+
+msgid "Notice: The VAT prefix ({0}) does not match the supplier country ({1})."
+msgstr "Avviso: Il prefisso IVA ({0}) non corrisponde al paese del fornitore ({1})."
+
+msgid "VIES Valid"
+msgstr "Valido in VIES"
+
+msgid "Registered Name:"
+msgstr "Ragione sociale:"
+
+msgid "Registered Address:"
+msgstr "Indirizzo registrato:"
+
+msgid "Not registered in the official European VIES registry."
+msgstr "Non registrato nell'elenco ufficiale europeo VIES."
+
+msgid "Exempt intra-Community delivery according to Art. 6, para. 1 of the Austrian VAT Act of 1994."
+msgstr "Cessione intracomunitaria esente ai sensi dell'art. 6, par. 1 della legge austriaca sull'IVA del 1994."
